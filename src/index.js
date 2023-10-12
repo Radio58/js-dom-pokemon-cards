@@ -15,8 +15,13 @@ data.forEach(pokemon => {
     const sprite = document.createElement('img')
     const statslist = document.createElement('ul')
 
+    const name = pokemon.name
+    name[0] = name[0].toUpperCase()
+
     title.innerText = pokemon.name
     sprite.src = pokemon.sprites.other['official-artwork'].front_default
+    sprite.width = 256
+    sprite.alt = `${pokemon.name}s sprite`
 
     mainlist.className = 'card'
     title.className = 'card--title'
@@ -25,13 +30,11 @@ data.forEach(pokemon => {
 
     pokemon.stats.forEach(stat => {
         const s = document.createElement('li')
-        s.innerText = stat.base_stat
+        s.innerText = `${stat.stat.name.toUpperCase()}: ${stat.base_stat}`
         statslist.append(s)
     })
 
-    mainlist.append(title)
-    mainlist.append(sprite)
-    mainlist.append(statslist)
+    mainlist.append(title, sprite, statslist)
     
     main.append(mainlist)
     console.log(mainlist)
