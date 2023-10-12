@@ -1,12 +1,7 @@
-
-console.log(data);
-
 //You can start simple and just render a single 
 //pokemon card from the first element
-console.log(data[0]);
 
 data.forEach(pokemon => {
-
     const main = document.querySelector('.cards')
 
     const mainlist = document.createElement('li')
@@ -15,13 +10,17 @@ data.forEach(pokemon => {
     const sprite = document.createElement('img')
     const statslist = document.createElement('ul')
 
-    const name = pokemon.name
-    name[0] = name[0].toUpperCase()
+    const name = pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)
 
-    title.innerText = pokemon.name
+    title.innerText = name
+    
     sprite.src = pokemon.sprites.other['official-artwork'].front_default
     sprite.width = 256
-    sprite.alt = `${pokemon.name}s sprite`
+    sprite.alt = `${name}s sprite`
+
+    mainlist.style.listStyle = 'none'
+    statslist.style.listStyle = 'none'
+    
 
     mainlist.className = 'card'
     title.className = 'card--title'
@@ -31,6 +30,7 @@ data.forEach(pokemon => {
     pokemon.stats.forEach(stat => {
         const s = document.createElement('li')
         s.innerText = `${stat.stat.name.toUpperCase()}: ${stat.base_stat}`
+        s.style.padding = '5px'
         statslist.append(s)
     })
 
@@ -38,17 +38,5 @@ data.forEach(pokemon => {
     
     main.append(mainlist)
     console.log(mainlist)
-
-    // const hp_el = document.createElement('li')
-    // const attack_el = document.createElement('li')
-    // const defense_el = document.createElement('li')
-    // const specialattack_el = document.createElement('li')
-    // const specialdefense_el = document.createElement('li')
-    // const speed_el = document.createElement('li')
-
-
-
-
-    //console.log(name, hp, attack, defense, specialattack, specialdefense, speed)
 });
 
