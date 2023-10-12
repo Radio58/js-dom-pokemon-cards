@@ -1,9 +1,9 @@
 //You can start simple and just render a single 
 //pokemon card from the first element
 
-data.forEach(pokemon => {
-    const main = document.querySelector('.cards')
+const main = document.querySelector('.cards')
 
+data.forEach(pokemon => {
     const mainlist = document.createElement('li')
 
     const title = document.createElement('h2')
@@ -21,7 +21,6 @@ data.forEach(pokemon => {
     mainlist.style.listStyle = 'none'
     statslist.style.listStyle = 'none'
     
-
     mainlist.className = 'card'
     title.className = 'card--title'
     sprite.className = 'card--img'
@@ -37,6 +36,5 @@ data.forEach(pokemon => {
     mainlist.append(title, sprite, statslist)
     
     main.append(mainlist)
-    console.log(mainlist)
 });
 
